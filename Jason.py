@@ -1,5 +1,5 @@
 import time
-import random
+import sys
 
 # Tela principal
 
@@ -7,12 +7,12 @@ def main():
     print('                          Fuja do Jason              ')
     print("              ===========================================")
     time.sleep(1)
-    print(' Nest jogo você é um jovem que vai trabalhar no acampamento Crystal Lake em'
+    print_slow(' Neste jogo você é um jovem que vai trabalhar no acampamento Crystal Lake em'
           '\n suas férias da faculdade, mas o que não sabe ainda, é que neste acampamento '
-          '\n          reside o mais puro mal, um espírito vingativo...')
+          '\n          reside o mais puro mal, um espírito vingativo...\n\n ')
     time.sleep(1)
-    print('          Será que você consegue sobreviver a uma noite ?\n\n')
-    time.sleep(1)
+    print('         Será que você consegue sobreviver a uma noite ?\n')
+    time.sleep(2)
 
     jason_head = ['                           ██████████████            ',
                   '                       ████              ████        ',
@@ -43,29 +43,49 @@ def main():
         print(jason_head_part)
 
     print('\n\nInstruções: Digite as opções mostradas quando solicitado.\n')
+    time.sleep(1)
     print('         https://www.youtube.com/watch?v=NAFEiBzMXxc')
     print('            Trilha sonora obrigatória no game !')
-    comeco = (input('Quando quiser começar, digite a palavra jogar:')).casefold()
+    time.sleep(1)
+    texto_lento = '       Quando quiser começar, digite a palavra jogar:'
+    print_slow('       Quando quiser começar, digite a palavra jogar:')
+    comeco = (input('')).casefold()
     while comeco == 'jogar':
         selecao_personagem()
     else:
         print('Até logo então :)')
 
+def print_slow(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.000001)
+
+def input_slow(str):
+    for letter in str:
+        sys.stdin.write(letter)
+        sys.stdin.flush()
+        time.sleep(0.01)
+
 # Seleção de personagens
 
 def selecao_personagem():
-    user_in = int(input("Selecione seu personagem:\n 1 - Marcie\n 2 - Jack\n 3 - Annie \nDigite 1, 2 ou 3:"))
+    print_slow("Selecione seu personagem:\n 1 - Marcie\n 2 - Jack\n 3 - Annie \nDigite 1, 2 ou 3:")
+    user_in = int(input(''))
     if user_in == 1:
-        print('Você escolheu a Marcie.')
+        print_slow('Você escolheu a Marcie.\n')
+        time.sleep(1)
         game1()
     elif user_in == 2:
-        print('Você escolheu o Jack.')
+        print_slow('Você escolheu o Jack.\n')
+        time.sleep(1)
         game2()
     elif user_in == 3:
-        print('Você escolheu a Annie.')
+        print_slow('Você escolheu a Annie.\n')
+        time.sleep(1)
         game3()
     else:
-        print("Digite uma opção válida !")
+        print_slow("Digite uma opção válida !")
         selecao_personagem()
 
 # Possibilidades de morte
@@ -110,14 +130,17 @@ def jogador_morre_machado():
 
 def game1():
     print('======================================================================')
-    resposta = input("Você está trabalhando como monitor, está de noite e você"
-                     "\navista um movimento estranho na floresta ao seu lado,"
-                     "\no que você faz ?\n A - Verifica os arbustos\n B - Ignore e entra em sua cabana \nDigite A ou B:").upper()
+    print_slow("Você está trabalhando como monitor, está de noite...\n")
+    print_slow("Nota-se um movimento estranho na floresta ao seu lado.\n")
+    print_slow("                O que você faz ?\n")
+    print_slow("A - Verifica os arbustos\nB - Ignore e entra em sua cabana \n")
+    print_slow("Digite A ou B:")
+    resposta = input('').upper()
     if resposta == 'A':
         print("Infelizmente Jason estava te esperando atrás da árvore.")
         jogador_morreu()
     elif resposta == 'B':
-        print("Você entra em sua cabana com segurança.")
+        print_slow("Você entra em sua cabana com segurança.")
         jogador_cabana_marcie()
     else:
         print("Por favor, digite uma opção válida !")
@@ -125,8 +148,9 @@ def game1():
 
 def jogador_cabana_marcie():
     print('======================================================================')
-    resposta = input("Você entra na cabana, mas sente que tem alguém te observando pela janela,"
-                     "\no que você faz ?\n A - Verifica a Janela\n B - Tenta se esconder e esquecer do problema \nDigite A ou B:").upper()
+    print_slow("Você entra na cabana, mas sente que tem alguém te observando pela janela,"
+                     "\no que você faz ?\n A - Verifica a Janela\n B - Tenta se esconder e esquecer do problema \nDigite A ou B:")
+    resposta = input('').upper()
     if resposta == 'A':
         print("Infelizmente Jason estava te observando e decide te atacar, quebrando a janela e agarrando seu pescoço.")
         jogador_morreu()
@@ -243,7 +267,7 @@ def jogador_entra_jack():
 def game3():
     print('======================================================================')
     resposta = input(
-        'Você foi a última dos monitores ao entrar no trabalho, e percebe que o ambiente possui um aspecto estranho, nunca antes\n visto, apesar de já ter visto filmes de terror, decide por ignorar esse fato.\n  Esta noite você está descansando após um longo expediente vigiando as crianças do acampamento, quando\n do nada, o corpo de seu amigo Jack é lançado pela sua janela, sem um dos pés.\n Você fica aterrorizada e vê que logo em seguida, uma figura mascarada entra pela janela quebrada, e começa\n a te perseguir.\n Nota-se que exite uma escada dentro do chalé, o que você faz ?\n A - Tenta subir a escada pra escapar do mal iminente\n B - Acaba optando por procurar outra saída dentro do chalé.\n Digite A ou B: ').upper()
+        'Você foi a última dos monitores ao entrar no trabalho, e percebe que o ambiente possui um aspecto estranho, nunca antes\nvisto, apesar de já ter visto filmes de terror, decide por ignorar esse fato.\nEsta noite você está descansando após um longo expediente vigiando as crianças do acampamento, quando\ndo nada, o corpo de seu amigo Jack é lançado pela sua janela, sem um dos pés.\nVocê fica aterrorizada e vê que logo em seguida, uma figura mascarada entra pela janela quebrada, e começa\na te perseguir.\nNota-se que exite uma escada dentro do chalé, o que você faz ?\n A - Tenta subir a escada pra escapar do mal iminente\n B - Acaba optando por procurar outra saída dentro do chalé.\n Digite A ou B: ').upper()
     if resposta == 'A':
         print('Agora você sobe as escadas, talvez você encontre algo na parte de cima que te ajude nessa fuga.')
         jogador_escada_annie()
