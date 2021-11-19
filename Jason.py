@@ -1,7 +1,7 @@
 import time
 import sys
 
-# Tela principal
+# Tela principal - OK
 
 def main():
     print('                          Fuja do Jason              ')
@@ -55,17 +55,19 @@ def main():
     else:
         print('Até logo então :)')
 
+# Funções de temporizador de letras - OK
+
 def print_slow(str):
     for letter in str:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(0.2)
+        time.sleep(0.00000001)
 
 def input_slow(str):
     for letter in str:
         sys.stdin.write(letter)
         sys.stdin.flush()
-        time.sleep(0.000001)
+        time.sleep(0.00000001)
 
 # Seleção de personagens - OK
 
